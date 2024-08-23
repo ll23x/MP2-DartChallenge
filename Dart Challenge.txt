@@ -1,0 +1,81 @@
+import 'dart:math';
+
+// TODO: Implement the Song class
+class Song {
+  String title;
+  String artist;
+  int duration; // duration in seconds
+
+  Song(this.title, this.artist, this.duration);
+
+  @override
+  String toString() {
+    return '$title by $artist (${duration}s)';
+  }
+}
+
+// TODO: Implement the Playlist class
+class Playlist {
+  String name;
+  List<Song> songs = [];
+
+  Playlist(this.name);
+
+  void addSong(Song song) {
+    songs.add(song);
+  }
+
+  void removeSong(Song song) {
+    songs.remove(song);
+  }
+
+  void displaySongs() {
+    print('Playlist: $name');
+    for (var song in songs) {
+      print(song);
+    }
+  }
+}
+
+// TODO: Implement the MusicFestival class
+class MusicFestival {
+  String name;
+  List<Playlist> playlists = [];
+
+  MusicFestival(this.name);
+
+  void addPlaylist(Playlist playlist) {
+    playlists.add(playlist);
+  }
+
+  void displayPlaylists() {
+    print('Music Festival: $name');
+    for (var playlist in playlists) {
+      playlist.displaySongs();
+    }
+  }
+}
+// Void main this is the sets you can edit your work, and its like inheritance that all of the "var" is connected to the code upright.
+void main() {
+  print('Welcome to the Music Festival Playlist Manager!');
+
+  // Create songs
+  var song1 = Song('Lockout Of Heaven', 'Bruno Mars', 234);
+  var song2 = Song('Bohemian Rhapsody', 'Queen', 354);
+  var song3 = Song('Wide Awake', 'Katy Perry', 227);
+  var song4 = Song('Lighters', 'Bad Meets Evil and Bruno Mars', 303);
+
+  // Create a playlist
+  var playlist = Playlist('My Favorite Songs');
+  playlist.addSong(song1);
+  playlist.addSong(song2);
+  playlist.addSong(song3);
+  playlist.addSong(song4);
+
+  // Create a music festival
+  var festival = MusicFestival('Random Music');
+  festival.addPlaylist(playlist);
+
+  // Display playlists
+  festival.displayPlaylists();
+}
